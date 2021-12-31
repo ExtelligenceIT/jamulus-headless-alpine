@@ -78,7 +78,7 @@ else
         printf "<html>\n<body>\n</body>\n</html>" > /jamulus/welcome.html
     fi
 
-    if [ -r /etc/init.d/jamulus-headless]
+    if [ -r /etc/init.d/jamulus-headless ]
     then
         echo " - jamulus service already exists - keeping"
     else
@@ -89,16 +89,11 @@ else
         rc-update add jamulus-headless
     fi
 
-    if [ -r /etc/httpd.conf]
+    if [ -r /etc/httpd.conf ]
     then
         echo " - httpd.conf already exists - confirm it contains /jamulus/www"
     else
         echo " - creating /etc/httpd.conf"
         printf "H:/jamulus/www" > /etc/httpd.conf
     fi
-
-
-
-    
-    
 fi

@@ -7,7 +7,7 @@ Scripts to install and run a headless Jamulus server on Alpine Linux
 
         > wget https://raw.githubusercontent.com/ExtelligenceIT/jamulus-headless-alpine/main/install/jamulus-install.sh
         > chmod +x jamulus-install.sh
-        > ./jamulus-install
+        > ./jamulus-install.sh
 
 3. **Required:**
     - Update `/jamulus/serverinfo` with relevent information
