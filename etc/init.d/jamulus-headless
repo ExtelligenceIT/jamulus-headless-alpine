@@ -7,11 +7,11 @@ command_args="--nogui --server --multithreading \
   --discononquit \
   --fastupdate \
   --norecord \
-  --serverinfo \"$(cat /jam/serverinfo)\" \
-  --directoryserver \"$(cat /jam/directoryserver)\" \
-  -l /jam/jamulus.log \
-  -R /jam/rec -m /jam/www/status.html \
-  -w /jam/welcome.html"
+  --serverinfo \"$(cat /jamulus/serverinfo)\" \
+  --directoryserver \"$(cat /jamulus/directoryserver)\" \
+  -l /jamulus/jamulus.log \
+  -R /jamulus/rec -m /jamulus/www/status.html \
+  -w /jamulus/welcome.html"
 
 pidfile="/run/${RC_SVCNAME}.pid"
 command_background=true
