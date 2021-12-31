@@ -59,7 +59,7 @@ else
         echo " - /jamulus/directoryserver already exists - keeping"
     else
         echo " - Creating default directoryserver file"
-        echo "anygenre2.jamulus.io:22224" > /jamulus/directoryserver
+        printf "anygenre2.jamulus.io:22224" > /jamulus/directoryserver
     fi
 
     if [ -r /jamulus/serverinfo ] && [ -s /jamulus/serverinfo ]
@@ -67,7 +67,7 @@ else
         echo " - /jamulus/serverinfo already exists - keeping"
     else
         echo " - Creating default serverinfo file"
-        echo "[name];[city];[locale value]" > /jamulus/serverinfo
+        printf "[name];[city];[locale value]" > /jamulus/serverinfo
     fi
 
     if [ -r /jamulus/welcome.html ]
@@ -75,7 +75,7 @@ else
         echo " - /jamulus/welcome.html already exists - keeping"
     else
         echo " - creating default welcome file"
-        echo "<html>\n<body>\n</body>\n</html>" > /jamulus/welcome.html
+        printf "<html>\n<body>\n</body>\n</html>" > /jamulus/welcome.html
     fi
 
     if [ -r /etc/init.d/jamulus-headless]
@@ -94,9 +94,7 @@ else
         echo " - httpd.conf already exists - confirm it contains /jamulus/www"
     else
         echo " - creating /etc/httpd.conf"
-        echo "H:/jamulus/www" > /etc/httpd.conf
-        echo " - enabling service httpd to run on startup"
-        rc-update add httpd
+        printf "H:/jamulus/www" > /etc/httpd.conf
     fi
 
 
