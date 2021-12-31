@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+
+name="${RC_SVCNAME}"
+command="/usr/local/bin/Jamulus"
+command_args="--nogui --server --multithreading \
+  --port 22124 \
+  --discononquit \
+  --fastupdate \
+  --norecord \
+  --serverinfo \"$(cat /jam/serverinfo)\" \
+  --directoryserver \"$(cat /jam/directoryserver)\" \
+  -l /jam/jamulus.log \
+  -R /jam/rec -m /jam/www/status.html \
+  -w /jam/welcome.html"
+
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background=true
+extra_started_commands="togglerec newrec"
+
+depend() {
+        need net
+}
+
+togglerec() {
+  ebegin "Toggling recording for ${RC_SVCNAME}"
+  start-stop-daemon --signal SIGUSR2 --pidfile "${pidfile}"
+  eend $?
+}
+
+newrec() {
+  ebegin "Starting new recording for ${RC_SVCNAME}"
+  start-stop-daemon --signal SIGUSR1 --pidfile "${pidfile}"
+  eend $?
+}
